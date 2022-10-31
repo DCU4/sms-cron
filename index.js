@@ -1,4 +1,5 @@
 'use strict';
+
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ const phoneNumTo = process.env.PHONE_TO ? process.env.PHONE_TO : credentials.PHO
 
 app.use(cors());
 
+
 function sendMessage(msg = 'Hello there!') {
   client.messages
   .create({
@@ -29,19 +31,13 @@ function sendMessage(msg = 'Hello there!') {
   .catch(err => console.log('error:', err));
 }
 
-const agent = new https.Agent({  
-  rejectUnauthorized: false
-});
 
-
-  // homepage
 app.get('/random-quote', (req, res) => {
   if (res.statusCode === 200){
 
   const config = {
     method: 'GET',
     url: 'https://zenquotes.io/api/random/',
-    // httpsAgent: agent
   };
   axios(config)
     .then((response) => {
@@ -64,7 +60,6 @@ app.get('/random-quote', (req, res) => {
     res.sendStatus(404)
   }
 });
-
 
 
 // connect to server
