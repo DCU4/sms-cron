@@ -11,3 +11,4 @@ jobs:
         run: |
           curl --request GET \
           --url 'https://sms-cron.vercel.app/random-quote'
+          --header 'Accept: application/json'
