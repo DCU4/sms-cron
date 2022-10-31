@@ -10,4 +10,4 @@ jobs:
       - name: Call our API route
         run: |
           curl --request GET \
-          --url 'sms-cron.vercel.app/random-quote'
+          --url 'https://sms-cron.vercel.app/random-quote'
