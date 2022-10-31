@@ -1,0 +1,13 @@
+name: daily-cron
+on:
+  schedule:
+    # - cron: '0 1 * * *'
+    - cron: '2 * * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call our API route
+        run: |
+          curl --request GET \
+          --url 'sms-cron.vercel.app/random-quote'
