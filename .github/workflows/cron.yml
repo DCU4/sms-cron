@@ -2,7 +2,6 @@ name: daily-cron
 on:
   schedule:
     - cron: '*/5 * * * *'
-    # - cron: '0 1 * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
