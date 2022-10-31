@@ -42,8 +42,8 @@ app.get('/random-quote', (req, res) => {
   axios(config)
     .then((response) => {
       if (response.status === 200) {
-        console.log(response.data)
         sendMessage(response.data[0].q + '\n--' + response.data[0].a);
+        res.json(response.data);
       } else {
         res.sendStatus(404)
       }
