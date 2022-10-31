@@ -62,5 +62,17 @@ app.get('/random-quote', (req, res) => {
 });
 
 
+app.get('/', (req, res) => {
+  if (res.statusCode === 200){
+
+  res.json('sms-cron up ok')
+
+  } else {
+    res.sendStatus(404)
+  }
+});
+
+
+
 // connect to server
 app.listen(port, () => console.log(`Listening on port ${port}!`));
