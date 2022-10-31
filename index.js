@@ -6,7 +6,6 @@ const port = process.env.PORT || 3000;
 const cors = require('cors');
 const fs = require("fs");
 const axios = require('axios');
-const https = require('https');
 let credentials;
 if (fs.existsSync('./credentials.json')) {
   credentials = require('./credentials.json');
@@ -49,6 +48,7 @@ app.get('/random-quote', (req, res) => {
       }
     })
     .catch((error) => {
+      sendMessage('error');
       if (error.response && error.response.data) {
         console.log('ERROR:', error.response.data)
       } else {
