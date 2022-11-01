@@ -8,14 +8,4 @@ jobs:
     steps:
       - name: Call our API route
         id: api-call
-        run: |
-          response = $(curl https://sms-cron.vercel.app/random-quote -header "Accept= application/json")         
-          echo "api_res=$response" >> $GITHUB_OUTPUT
-        # curl --request GET \
-        # --url 'https://sms-cron.vercel.app/random-quote' \
-        # --header 'Accept: application/json'
-      - name: Set color
-        id: random-color-generator
-        run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
-      - name: Get color
-        run: echo "The selected color is ${{ steps.api-call.outputs.api_res }}"
+        run: curl https://sms-cron.vercel.app/random-quote -header "Accept= application/json"
