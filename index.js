@@ -19,14 +19,16 @@ const phoneNumTo = process.env.PHONE_TO ? process.env.PHONE_TO : credentials.PHO
 app.use(cors());
 
 
-function sendMessage(msg = 'Hello there!') {
+const sendMessage = async (msg = 'Hello there!') => {
   client.messages
   .create({
     body: msg,
     from: phoneNumFrom,
     to: phoneNumTo
   })
-  .then(message => console.log('success:', message.sid))
+  .then(message => {
+    return message.sid;
+  })
   .catch(err => console.log('error:', err));
 }
 
@@ -41,8 +43,11 @@ app.get('/random-quote', (req, res) => {
   axios(config)
     .then((response) => {
       if (response.status === 200) {
-        sendMessage(response.data[0].q + '\n--' + response.data[0].a);
-        res.json(response.data);
+        sendMessage(response.data[0].q + '\n--' + response.data[0].a)
+        .then(resp => {
+          res.json(resp.data);
+        })
+        .catch(err => console.log('in axios sendMessage error:', err));
       } else {
         res.sendStatus(404)
       }
