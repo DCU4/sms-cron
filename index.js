@@ -45,11 +45,12 @@ app.get('/random-quote', (req, res) => {
       if (response.status === 200) {
         sendMessage(response.data[0].q + '\n--' + response.data[0].a)
         .then(resp => {
-          if (resp) {
-            res.json(resp.data);
-          } else {
-            res.json('just wait for it')
-          }
+          res.json(resp.data);
+          // if (resp) {
+          //   res.json(resp.data);
+          // } else {
+          //   res.json('just wait for it')
+          // }
         })
         .catch(err => console.log('in axios sendMessage error:', err));
       } else {
