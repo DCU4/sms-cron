@@ -31,7 +31,7 @@ function sendMessage(msg = 'Hello there!') {
 }
 
 
-app.post('/random-quote', (req, res) => {
+app.get('/random-quote', (req, res) => {
   if (res.statusCode === 200){
 
   const config = {
