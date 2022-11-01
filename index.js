@@ -27,7 +27,7 @@ const sendMessage = async (msg = 'Hello there!') => {
     to: phoneNumTo
   })
   .then(message => {
-    return message;
+    return message.id;
   })
   .catch(err => console.log('error:', err));
 }
