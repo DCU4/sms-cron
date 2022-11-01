@@ -27,7 +27,7 @@ const sendMessage = async (msg = 'Hello there!') => {
     to: phoneNumTo
   })
   .then(message => {
-    return message.sid;
+    return message;
   })
   .catch(err => console.log('error:', err));
 }
@@ -45,7 +45,7 @@ app.get('/random-quote', (req, res) => {
       if (response.status === 200) {
         sendMessage(response.data[0].q + '\n--' + response.data[0].a)
         .then(resp => {
-          res.json(resp.data);
+          res.json(resp);
           // if (resp) {
           //   res.json(resp.data);
           // } else {
